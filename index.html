@@ -44,8 +44,7 @@
 			</div>
 		</div>
 		<div id="copyright">
-			<a href="#">....</a><br />
-
+			<a onclick="javascript:playmusic();" href="#"><img src="./images/logo.png" width="50px" height="50px" /></a><br />
 
 		</div>
 	</div>
@@ -88,23 +87,36 @@
 
 	</audio>
 
-	<audio id="bgmusic" preload="auto" controls="none" autoplay="true">
-		<source src="http://www.xsky.vip/music/1.mp3">
+<div>
+	<audio id="bgmusic" preload="auto" controls="none" autoplay="true" hidden="true" volume=0.2>
+		<source id="fpath" src="">
 	</audio>
-
-
-	<!----------后期添加代码-->
+</div>
+<!--
+	<-------后期添加代码->
 	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			function audioAutoPlay() {
+				var audio = document.getElementById('bgmusic');
+				audio.volume = 0.2;
+				audio.play();
+				document.addEventListener("WeixinJSBridgeReady", function () {
+					audio.play();
+				}, false);
+			}
+			audioAutoPlay();
+		});
 		document.addEventListener('touchstart', function () {
 			function audioAutoPlay() {
 				var audio = document.getElementById('bgmusic');
+				audio.volume = 0.2;
 				audio.play();
 			}
 			audioAutoPlay();
 		});
 
 	</script>
-	<!----------以上-->
+	以上-->
 </body>
 
 </html>

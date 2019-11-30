@@ -3,6 +3,27 @@ var $window = $(window), gardenCtx, gardenCanvas, $garden, garden;
 var clientWidth = $(window).width();
 var clientHeight = $(window).height();
 
+/*自定义代码段*/
+var musicBaseURL = "http://www.xsky.vip/music/";
+var playing = false;
+var musicCnt = 2;
+function playmusic() {
+	var audio = document.getElementById('bgmusic');
+	if (!playing) {
+		var music = document.getElementById('fpath');
+		var music_id = Math.floor(Math.random() * musicCnt);
+		music.src = musicBaseURL + music_id + '.mp3';
+		audio.volume = 0.2;
+		audio.load();
+		audio.play();
+		playing=true;
+	}
+	else {
+		audio.pause();
+		playing=false;
+	}
+}
+/*以上*/
 
 $(function () {
 	// setup garden
