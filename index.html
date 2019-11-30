@@ -26,33 +26,6 @@
 </head>
 
 <body>
-<!----------后期添加代码-->
-	<audio id="bgmusic" autoplay="autoplay" preload="auto" >
-		<source src="http://www.xsky.vip/music/1.mp3" type="audio/mpeg">
-			abcdefg
-	</audio>
-<script>
-
-document.addEventListener('DOMContentLoaded', function () {
-    function audioAutoPlay() {
-        var audio = document.getElementById('bgmusic');
-            audio.play();
-        document.addEventListener("WeixinJSBridgeReady", function () {
-            audio.play();
-        }, false);
-    }
-    audioAutoPlay();
-});
-
-document.addEventListener('touchstart', function () {
-    function audioAutoPlay() {
-        var audio = document.getElementById('audio');
-            audio.play();
-    }
-    audioAutoPlay();
-});
-</script>
-<!----------以上-->
 	<div id="mainDiv">
 		<div id="content">
 
@@ -114,7 +87,20 @@ document.addEventListener('touchstart', function () {
 
 
 	</audio>
+	
+		<audio id="bgmusic" preload="auto" controls="none" autoplay="true">
+			<source src="http://www.xsky.vip/music/1.mp3">
+		</audio>
 
+	
+	<!----------后期添加代码-->
+	<script>
+		$(function () {
+			$("#bgmusic").play();
+		})
+
+	</script>
+	<!----------以上-->
 </body>
 
 </html>
