@@ -44,8 +44,7 @@
 			</div>
 		</div>
 		<div id="copyright">
-			<a onclick="javascript:playmusic();" href="#"><img src="./images/logo.png" width="50px" height="50px" /></a><br />
-
+			<a onclick="javascript:playmusic();return false;" href="#"><img src='./images/logo.png' width='70px' height="70px"/></a><br />
 		</div>
 	</div>
 
@@ -77,9 +76,10 @@
 			setInterval(function () {
 				timeElapse(together);
 			}, 500);
-
+/*
 			adjustCodePosition();
 			$("#code").typewriter();
+*/
 		}
 	</script>
 
@@ -92,31 +92,7 @@
 		<source id="fpath" src="">
 	</audio>
 </div>
-<!--
-	<-------后期添加代码->
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			function audioAutoPlay() {
-				var audio = document.getElementById('bgmusic');
-				audio.volume = 0.2;
-				audio.play();
-				document.addEventListener("WeixinJSBridgeReady", function () {
-					audio.play();
-				}, false);
-			}
-			audioAutoPlay();
-		});
-		document.addEventListener('touchstart', function () {
-			function audioAutoPlay() {
-				var audio = document.getElementById('bgmusic');
-				audio.volume = 0.2;
-				audio.play();
-			}
-			audioAutoPlay();
-		});
 
-	</script>
-	以上-->
 </body>
 
 </html>
