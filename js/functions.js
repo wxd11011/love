@@ -4,41 +4,42 @@ var clientWidth = $(window).width();
 var clientHeight = $(window).height();
 
 $(function () {
-    // setup garden
+	// setup garden
 	$loveHeart = $("#loveHeart");
 	var offsetX = $loveHeart.width() / 2;
 	var offsetY = $loveHeart.height() / 2 - 55;
-    $garden = $("#garden");
-    gardenCanvas = $garden[0];
+	$garden = $("#garden");
+	gardenCanvas = $garden[0];
 	gardenCanvas.width = $("#loveHeart").width();
-    gardenCanvas.height = $("#loveHeart").height()
-    gardenCtx = gardenCanvas.getContext("2d");
-    gardenCtx.globalCompositeOperation = "lighter";
-    garden = new Garden(gardenCtx, gardenCanvas);
-	
+	gardenCanvas.height = $("#loveHeart").height()
+	gardenCtx = gardenCanvas.getContext("2d");
+	gardenCtx.globalCompositeOperation = "lighter";
+	garden = new Garden(gardenCtx, gardenCanvas);
+
 	$("#content").css("width", $loveHeart.width() + $("#code").width());
 	$("#content").css("height", Math.max($loveHeart.height(), $("#code").height()));
 	$("#content").css("margin-top", Math.max(($window.height() - $("#content").height()) / 2, 10));
 	$("#content").css("margin-left", Math.max(($window.width() - $("#content").width()) / 2, 10));
 
-    // renderLoop
-    setInterval(function () {
-        garden.render();
-    }, Garden.options.growSpeed);
+	// renderLoop
+	setInterval(function () {
+		garden.render();
+	}, Garden.options.growSpeed);
 });
 
-$(window).resize(function() {
-    var newWidth = $(window).width();
-    var newHeight = $(window).height();
-    if (newWidth != clientWidth && newHeight != clientHeight) {
-        location.replace(location);
-    }
+$(window).resize(function () {
+	var newWidth = $(window).width();
+	var newHeight = $(window).height();
+	if (newWidth != clientWidth && newHeight != clientHeight) {
+		location.replace(location);
+	}
 });
 
 function getHeartPoint(angle) {
 	var t = angle / Math.PI;
-	var x = 19.5 * (16 * Math.pow(Math.sin(t), 3));
-	var y = - 20 * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+	var hScale = 1.4;
+	var x = hScale * 19.5 * (16 * Math.pow(Math.sin(t), 3));
+	var y = hScale * - 20 * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
 	return new Array(offsetX + x, offsetY + y);
 }
 
@@ -65,17 +66,17 @@ function startHeartAnimation() {
 			clearInterval(animationTimer);
 			showMessages();
 		} else {
-			angle += 0.2;
+			angle += 0.15;
 		}
 	}, interval);
 }
 
-(function($) {
-	$.fn.typewriter = function() {
-		this.each(function() {
+(function ($) {
+	$.fn.typewriter = function () {
+		this.each(function () {
 			var $ele = $(this), str = $ele.html(), progress = 0;
 			$ele.html('');
-			var timer = setInterval(function() {
+			var timer = setInterval(function () {
 				var current = str.substr(progress, 1);
 				if (current == '<') {
 					progress = str.indexOf('>', progress) + 1;
@@ -92,7 +93,7 @@ function startHeartAnimation() {
 	};
 })(jQuery);
 
-function timeElapse(date){
+function timeElapse(date) {
 	var current = Date();
 	var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
 	var days = Math.floor(seconds / (3600 * 24));
@@ -110,13 +111,13 @@ function timeElapse(date){
 	if (seconds < 10) {
 		seconds = "0" + seconds;
 	}
-	var result = "<span class=\"digit\">" + days + "</span> 天 <span class=\"digit\">" + hours + "</span> 小时 <span class=\"digit\">" + minutes + "</span> 分 <span class=\"digit\">" + seconds + "</span> 秒"; 
+	var result = "<span class=\"digit\">" + days + "</span> 天 <span class=\"digit\">" + hours + "</span> 小时 <span class=\"digit\">" + minutes + "</span> 分 <span class=\"digit\">" + seconds + "</span> 秒";
 	$("#elapseClock").html(result);
 }
 
 function showMessages() {
 	adjustWordsPosition();
-	$('#messages').fadeIn(5000, function() {
+	$('#messages').fadeIn(5000, function () {
 		showLoveU();
 	});
 }
