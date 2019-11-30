@@ -10,6 +10,7 @@ var musicCnt = 5;
 $(function () { $('#copyright').fadeIn(3000); });
 function playmusic() {
 	var audio = document.getElementById('bgmusic');
+	if (audio.ended) { playing = false; }
 	if (!playing) {
 		var music = document.getElementById('fpath');
 		var music_id = Math.floor(Math.random() * musicCnt);
@@ -143,7 +144,7 @@ function showMessages() {
 	adjustWordsPosition();
 	$('#messages').fadeIn(5000, function () {
 		showLoveU();
-		
+
 	});
 }
 
