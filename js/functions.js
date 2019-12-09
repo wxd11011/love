@@ -6,7 +6,6 @@ var clientHeight = $(window).height();
 /*自定义代码段*/
 var getMusicURL = "http://www.xsky.vip/music.php";
 var playing = false;
-var musicCnt = 7;
 $(function () { $('#copyright').fadeIn(3000); });
 function playmusic() {
 	var audio = document.getElementById('bgmusic');
