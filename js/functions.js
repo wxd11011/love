@@ -4,7 +4,7 @@ var clientWidth = $(window).width();
 var clientHeight = $(window).height();
 
 /*自定义代码段*/
-var musicBaseURL = "http://www.xsky.vip/music/";
+var getMusicURL = "http://www.xsky.vip/music.php";
 var playing = false;
 var musicCnt = 7;
 $(function () { $('#copyright').fadeIn(3000); });
@@ -12,13 +12,22 @@ function playmusic() {
 	var audio = document.getElementById('bgmusic');
 	if (audio.ended) { playing = false; }
 	if (!playing) {
+		$.get(getMusicURL, function (data, status) {
+			document.getElementById("fpath").src = data;
+			audio.volume = 0.2;
+			audio.load();
+			audio.play();
+			playing = true;
+		});
+		/*
 		var music = document.getElementById('fpath');
 		var music_id = Math.floor(Math.random() * musicCnt);
 		music.src = musicBaseURL + music_id + '.mp3';
+		
 		audio.volume = 0.2;
 		audio.load();
 		audio.play();
-		playing = true;
+		playing = true;*/
 	}
 	else {
 		audio.pause();
