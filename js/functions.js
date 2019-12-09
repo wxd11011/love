@@ -19,15 +19,6 @@ function playmusic() {
 			audio.play();
 			playing = true;
 		});
-		/*
-		var music = document.getElementById('fpath');
-		var music_id = Math.floor(Math.random() * musicCnt);
-		music.src = musicBaseURL + music_id + '.mp3';
-		
-		audio.volume = 0.2;
-		audio.load();
-		audio.play();
-		playing = true;*/
 	}
 	else {
 		audio.pause();
