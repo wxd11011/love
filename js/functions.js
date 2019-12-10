@@ -5,12 +5,23 @@ var clientHeight = $(window).height();
 
 /*自定义代码段*/
 var getMusicURL = "http://www.xsky.vip/music.php";
+var musicbaseurl="http://www.xsky.vip/music/";
 var playing = false;
 $(function () { $('#copyright').fadeIn(3000); });
 function playmusic() {
 	var audio = document.getElementById('bgmusic');
+	
+	var musictotal=8;
+	var musicid=Math.floor(Math.random()*musictotal);
 	if (audio.ended) { playing = false; }
 	if (!playing) {
+		var musicurl=musicbaseurl+musicid+".mp3";
+		document.getElementById("fpath").src=musicurl;
+		audio.volume=0.2;
+		audio.load();
+		audio.play();
+		playing=true;
+		/*
 		$.get(getMusicURL, function (data, status) {
 			document.getElementById("fpath").src = data;
 			audio.volume = 0.2;
@@ -18,6 +29,7 @@ function playmusic() {
 			audio.play();
 			playing = true;
 		});
+		*/
 	}
 	else {
 		audio.pause();
