@@ -11,7 +11,7 @@ $(function () { $('#copyright').fadeIn(3000); });
 function playmusic() {
 	var audio = document.getElementById('bgmusic');
 	
-	var musictotal=8;
+	var musictotal=9;
 	var musicid=Math.floor(Math.random()*musictotal);
 	if (audio.ended) { playing = false; }
 	if (!playing) {
