@@ -22,8 +22,8 @@ function playmusic() {
 		audio.play();
 		playing=true;
 		*/
-		$.get(getMusicURL, function (data, status) {
-			document.getElementById("fpath").src = '${data}';
+		$.get(getMusicURL, function (data) {
+			document.getElementById("fpath").src = data;
 			audio.volume = 0.2;
 			audio.load();
 			audio.play();
