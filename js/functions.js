@@ -9,30 +9,33 @@ var musicbaseurl="http://www.xsky.vip/music/";
 var playing = false;
 $(function () { $('#copyright').fadeIn(3000); });
 function playmusic() {
-	var audio = document.getElementById('bgmusic');
+	var bgaudio = document.getElementById('bgmusic');
 	
 	var musictotal=8;
 	var musicid=Math.floor(Math.random()*musictotal);
-	if (audio.ended) { playing = false; }
+	if (bgaudio.ended) { playing = false; }
 	if (!playing) {
 		/*var musicurl=musicbaseurl+musicid+".mp3";
 		document.getElementById("fpath").src=musicurl;
-		audio.volume=0.2;
-		audio.load();
-		audio.play();
+		bgaudio.volume=0.2;
+		bgaudio.load();
+		bgaudio.play();
 		playing=true;
 		*/
 		$.get(getMusicURL, function (data) {
-			document.getElementById("fpath").src = data;
-			audio.volume = 0.2;
-			audio.load();
-			audio.play();
+			$("#loveu")[0].innerHTML=data;
+			$("#fpath")[0].src = data;
+			var bgmusic=$("#bgmusic")[0];
+			bgmusic.volume = 0.2;
+			alert(bgmusic);
+			//bgaudio.load();
+			bgaudio.play();
 			playing = true;
 		});
 		
 	}
 	else {
-		audio.pause();
+		bgaudio.pause();
 		playing = false;
 	}
 }
