@@ -8,13 +8,25 @@ var getMusicURL = "http://www.xsky.vip/music.php";
 var musicbaseurl="http://www.xsky.vip/music/";
 var playing = false;
 $(function () { $('#copyright').fadeIn(3000); });
+function initplayer(){
+	var bg=$("#bgmusic")[0];
+	$("#fpath")[0].src=musicbaseurl+"0.mp3";
+	bg.load();
+	bg.volume=0;
+	bg.play();
+	bg.pause();
+}
 function playmusic() {
+	initplayer();
 	var bgaudio = document.getElementById('bgmusic');
-	
+	bgaudio.volume=0.2;
 	var musictotal=8;
 	var musicid=Math.floor(Math.random()*musictotal);
 	if (bgaudio.ended) { playing = false; }
 	if (!playing) {
+		
+		var$("#bgmusic")[0].load()
+
 		/*var musicurl=musicbaseurl+musicid+".mp3";
 		document.getElementById("fpath").src=musicurl;
 		bgaudio.volume=0.2;
@@ -23,13 +35,13 @@ function playmusic() {
 		playing=true;
 		*/
 		$.get(getMusicURL, function (data) {
-			$("#loveu")[0].innerHTML=data;
 			$("#fpath")[0].src = data;
-			var bgmusic=$("#bgmusic")[0];
-			bgmusic.volume = 0.2;
-			alert(bgmusic);
-			//bgaudio.load();
-			bgaudio.play();
+			
+			var bgmusic= document.getElementById("bgmusic");
+			console.log(bgmusic);
+			bgmusic.load();
+			bgmusic.play();
+			
 			playing = true;
 		});
 		
