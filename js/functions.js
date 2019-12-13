@@ -9,19 +9,22 @@ var musicbaseurl="http://www.xsky.vip/music/";
 var playing = false;
 $(function () { $('#copyright').fadeIn(3000); });
 document.addEventListener("touchstart",function(myevent) {
-	$("#fpath")[0].src=musicbaseurl+"0.mp3";
+	/*$("#fpath")[0].src=musicbaseurl+"0.mp3";
 	$("#bgmusic")[0].load();
+	$("#bgmusic")[0].pause();
+	*/
+	initplayer();
 });
 function initplayer(){
 	var bg=$("#bgmusic")[0];
-	$("#fpath")[0].src=musicbaseurl+"0.mp3";
+	$("#fpath")[0].src=musicbaseurl+"1.mp3";
 	bg.load();
 	bg.volume=0;
 	bg.play();
 	bg.pause();
 }
 function playmusic() {
-	initplayer();
+	//initplayer();
 	var bgaudio = document.getElementById('bgmusic');
 	bgaudio.volume=0.2;
 	var musictotal=8;
