@@ -21,29 +21,35 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/garden.js"></script>
 	<script type="text/javascript" src="js/functions.js"></script>
-<!--------统计-->
-<script>
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "https://hm.baidu.com/hm.js?64049a5e1ea72f39f60382903ee292a8";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
-	})();
+	<!--------统计-->
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?64049a5e1ea72f39f60382903ee292a8";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
 	</script>
-<!------------统计END-->	
+	<!------------统计END-->
 </head>
 
 <body>
 	<div id="mainDiv">
+		<div id="bkimg">
+			<img src='/images/1g2.png' width=100%></img>
+			<div id="messages-bottom">
+				亲爱的慧芳，自2017年5月28日早上8点06分以来，我们已经相伴走过了
+				<div class="elapseClock"></div>
+			</div>
+		</div>
 		<div id="content">
-
 			<div id="loveHeart">
 				<canvas id="garden"></canvas>
 				<div id="words">
 					<div id="messages">
 						亲爱的慧芳，自2017年5月28日早上8点06分以来，我们已经相伴走过了
-						<div id="elapseClock"></div>
+						<div class="elapseClock"></div>
 					</div>
 					<div id="loveu">
 						爱你的小锤锤<br />
@@ -52,9 +58,13 @@
 				</div>
 			</div>
 		</div>
+
+
 		<div id="copyright">
-			<a onclick="javascript:playmusic();return false;" href="#"><img id="logoimg" src='./images/logo.png'/></a><br />
+			<a onclick="javascript:playmusic();return false;" href="#"><img id="logoimg"
+					src='./images/logo.png' /></a><br />
 		</div>
+
 	</div>
 
 	<script type="text/javascript">
@@ -85,10 +95,10 @@
 			setInterval(function () {
 				timeElapse(together);
 			}, 500);
-/*
-			adjustCodePosition();
-			$("#code").typewriter();
-*/
+			/*
+						adjustCodePosition();
+						$("#code").typewriter();
+			*/
 		}
 	</script>
 
@@ -96,11 +106,11 @@
 
 	</audio>
 
-<div>
-	<audio id="bgmusic" preload="auto" controls="none" autoplay="true" hidden volume=0.2>
-		<source id="fpath" src="">
-	</audio>
-</div>
+	<div>
+		<audio id="bgmusic" preload="auto" controls="none" autoplay="true" hidden volume=0.2>
+			<source id="fpath" src="">
+		</audio>
+	</div>
 
 </body>
 

@@ -5,33 +5,34 @@ var clientHeight = $(window).height();
 
 /*自定义代码段*/
 var getMusicURL = "http://www.xsky.vip/music.php";
-var musicbaseurl="http://www.xsky.vip/music/";
+var musicbaseurl = "http://www.xsky.vip/music/";
 var playing = false;
+var showBK = false;
 $(function () { $('#copyright').fadeIn(3000); });
-document.addEventListener("touchstart",function(myevent) {
+document.addEventListener("touchstart", function (myevent) {
 	/*$("#fpath")[0].src=musicbaseurl+"0.mp3";
 	$("#bgmusic")[0].load();
 	$("#bgmusic")[0].pause();
 	*/
 	initplayer();
 });
-function initplayer(){
-	var bg=$("#bgmusic")[0];
-	$("#fpath")[0].src=musicbaseurl+"1.mp3";
+function initplayer() {
+	var bg = $("#bgmusic")[0];
+	$("#fpath")[0].src = musicbaseurl + "1.mp3";
 	bg.load();
-	bg.volume=0;
+	bg.volume = 0;
 	bg.play();
 	bg.pause();
 }
 function playmusic() {
 	//initplayer();
 	var bgaudio = document.getElementById('bgmusic');
-	bgaudio.volume=0.2;
-	var musictotal=8;
-	var musicid=Math.floor(Math.random()*musictotal);
+	bgaudio.volume = 0.2;
+	var musictotal = 8;
+	var musicid = Math.floor(Math.random() * musictotal);
 	if (bgaudio.ended) { playing = false; }
 	if (!playing) {
-		
+
 		//var$("#bgmusic")[0].load()
 
 		/*var musicurl=musicbaseurl+musicid+".mp3";
@@ -44,19 +45,30 @@ function playmusic() {
 		$.get(getMusicURL, function (data) {
 			$("#fpath")[0].src = data;
 			//$("#loveu")[0].innerHTML=data;
-			var bgmusic= document.getElementById("bgmusic");
+			var bgmusic = document.getElementById("bgmusic");
 			console.log(bgmusic);
 			bgmusic.load();
 			bgmusic.play();
-			
+
 			playing = true;
 		});
-		
+
 	}
 	else {
 		bgaudio.pause();
 		playing = false;
 	}
+	//显示背景图片
+	if (!showBK) {
+		$("#bkimg").fadeIn("normal",function(){
+		//	$('#messages-bottom').css("top", $("#bkimg").height() + 0);
+			$("#messages-bottom").fadeIn("normal");
+		});
+		$("#content").fadeOut("normal");
+		
+		showBK=true;
+	}
+
 }
 
 /*以上*/
@@ -170,7 +182,7 @@ function timeElapse(date) {
 		seconds = "0" + seconds;
 	}
 	var result = "<span class=\"digit\">" + days + "</span> 天 <span class=\"digit\">" + hours + "</span> 小时 <span class=\"digit\">" + minutes + "</span> 分 <span class=\"digit\">" + seconds + "</span> 秒";
-	$("#elapseClock").html(result);
+	$(".elapseClock").html(result);
 }
 
 function showMessages() {
