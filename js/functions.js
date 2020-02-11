@@ -8,13 +8,37 @@ var getMusicURL = "http://www.xsky.vip/music.php";
 var musicbaseurl = "http://www.xsky.vip/music/";
 var playing = false;
 var showBK = false;
-$(function () { $('#copyright').fadeIn(3000); });
+var offsetX,offsetY,garden;
+
+$(function(){
+	var firstscreenwidth=document.body.offsetHeight;
+	$('#firstScreen').css('padding-left',clientWidth/2-50);
+	//$('#firstScreen').css('padding-right',clientWidth/2);
+	var txt="春水初生，春林初盛。春风十里，不如你。"
+	var ftext=document.getElementById('firstText');
+	var cnt=0
+	var writer=window.setInterval(function(){
+		if (++cnt<=txt.length)
+		{
+			ftext.innerHTML=txt.substring(0,cnt);
+		}
+		else{
+			window.clearInterval(writer);
+			$("#firstScreen").fadeOut(5000,function(){
+				$('#mainDiv').fadeIn(1000,function(){setupGarden()})
+			});
+		}
+	},400);
+	
+});
+
 document.addEventListener("touchstart", function (myevent) {
 	/*$("#fpath")[0].src=musicbaseurl+"0.mp3";
 	$("#bgmusic")[0].load();
 	$("#bgmusic")[0].pause();
 	*/
 	initplayer();
+	//playmusic();
 });
 function initplayer() {
 	var bg = $("#bgmusic")[0];
@@ -64,6 +88,7 @@ function playmusic() {
 		//	$('#messages-bottom').css("top", $("#bkimg").height() + 0);
 			$("#messages-bottom").fadeIn("normal");
 		});
+		//$('#mainDiv').css("position","static");
 		$("#content").fadeOut("normal");
 		
 		showBK=true;
@@ -73,11 +98,11 @@ function playmusic() {
 
 /*以上*/
 
-$(function () {
+function setupGarden() {
 	// setup garden
 	$loveHeart = $("#loveHeart");
-	var offsetX = $loveHeart.width() / 2;
-	var offsetY = $loveHeart.height() / 2 - 55;
+	offsetX = $loveHeart.width() / 2;
+	offsetY = $loveHeart.height() / 2 - 55;
 	$garden = $("#garden");
 	gardenCanvas = $garden[0];
 	gardenCanvas.width = $("#loveHeart").width();
@@ -95,7 +120,40 @@ $(function () {
 	setInterval(function () {
 		garden.render();
 	}, Garden.options.growSpeed);
-});
+
+	offsetX = $("#loveHeart").width() / 2;
+	offsetY = $("#loveHeart").height() / 2 - 55;
+	together = new Date();
+	together.setFullYear(2017, 4, 28);
+	together.setHours(8);
+	together.setMinutes(6);
+	together.setSeconds(0);
+	together.setMilliseconds(0);
+
+	if (!document.createElement('canvas').getContext) {
+		var msg = document.createElement("div");
+		msg.id = "errorMsg";
+		msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+		document.body.appendChild(msg);
+		$("#code").css("display", "none")
+		$("#copyright").css("position", "absolute");
+		$("#copyright").css("bottom", "10px");
+		document.execCommand("stop");
+	} else {
+		setTimeout(function () {
+			startHeartAnimation();
+		}, 500);
+
+		timeElapse(together);
+		setInterval(function () {
+			timeElapse(together);
+		}, 500);
+		
+					adjustCodePosition();
+					$("#code").typewriter();
+		
+	}
+}
 
 $(window).resize(function () {
 	var newWidth = $(window).width();
