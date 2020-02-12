@@ -14,8 +14,9 @@ $(function(){
 	var firstscreenwidth=document.body.offsetHeight;
 	
 	$('#firstScreen').css('margin-left',$(window).width()/2-35);
-	$('#text').fadeIn(3000,function(){
-		$('#firstScreen').fadeOut(5000,function(){
+	$('#text').css('margin-top',$(window).height()/2-450);
+	$('#text').fadeIn(5000,function(){
+		$('#firstScreen').fadeOut(6000,function(){
 			$('#mainDiv').fadeIn(1000,function(){setupGarden()})
 		});
 	});
