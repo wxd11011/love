@@ -6,6 +6,8 @@ var clientHeight = $(window).height();
 /*自定义代码段*/
 var getMusicURL = "http://www.xsky.vip/music.php";
 var musicbaseurl = "http://www.xsky.vip/music/";
+var lpicbaseurl="http://www.xsky.vip/love/images/";
+var lpics=new Array("1g2.png","2g.png");
 var playing = false;
 var showBK = false;
 var offsetX,offsetY,garden;
@@ -91,10 +93,13 @@ function playmusic() {
 		playing = false;
 	}
 	//显示背景图片
+	
 	if (!showBK) {
 		$("#bkimg").fadeIn("normal",function(){
 		//	$('#messages-bottom').css("top", $("#bkimg").height() + 0);
+		changeBkImg();
 			$("#messages-bottom").fadeIn("normal");
+			
 		});
 		//$('#mainDiv').css("position","static");
 		$("#content").fadeOut("normal");
@@ -103,7 +108,10 @@ function playmusic() {
 	}
 
 }
-
+function changeBkImg(){
+	pic_index=Math.floor(Math.random()*lpics.length);
+	$("#lpic")[0].src=lpicbaseurl+lpics[pic_index];
+}
 /*以上*/
 
 function setupGarden() {
