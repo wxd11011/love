@@ -21,29 +21,66 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/garden.js"></script>
 	<script type="text/javascript" src="js/functions.js"></script>
-<!--------统计-->
-<script>
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "https://hm.baidu.com/hm.js?64049a5e1ea72f39f60382903ee292a8";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
-	})();
+
+
+	<!--------统计-->
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?64049a5e1ea72f39f60382903ee292a8";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
 	</script>
-<!------------统计END-->	
+	<!------------统计END-->
 </head>
 
 <body>
-	<div id="mainDiv">
-		<div id="content">
+	<div id="firstScreen">
+		
+		<div id="text">
+            <img class="txtimg txtstyle" src="img/c1.png">
+            <img class="txtimg txtstyle" src="img/l2.png">
+            <img class="txtimg txtstyle" src="img/c.png">
+            <img class="txtimg txtstyle" src="img/sen.png">
+            <div class="txtima"><h1>,</h1></div>
+            <img class="txtimg txtstyle" src="img/c1.png">
+            <img class="txtimg txtstyle" src="img/s3.png">
+            <img class="txtimg txtstyle" src="img/c.png">
+            <img class="txtimg txtstyle" src="img/s4.png">
+            <div class="txtima"><p><h1>,</h1></p></div>
+            <img class="txtimg txtstyle" src="img/c1.png">
+            <img class="txtimg txtstyle" src="img/f.png">
+            <img class="txtimg txtstyle" src="img/s2.png">
+            <img class="txtimg txtstyle" src="img/l3.png">
+            <div class="txtima"><p><h1>,</h1></p></div>
+            <img class="txtimg txtstyle" src="img/bu.png">
+            <img class="txtimg txtstyle" src="img/ru.png">
+            <img class="txtimg txtstyle" src="img/ni.png">
+            <div class="txtima"><p><h1>。</h1></p></div>
+        </div>
 
+			
+		</div>
+	</div>
+	<div id="mainDiv">
+		<!--999days-->
+
+		<div id="bkimg">
+			<img src='/images/1g2.png' width=100%></img>
+			<div id="messages-bottom">
+				<div class="elapseClock"></div>
+			</div>
+		</div>
+		<!--999days end-->
+		<div id="content">
 			<div id="loveHeart">
 				<canvas id="garden"></canvas>
 				<div id="words">
 					<div id="messages">
 						亲爱的慧芳，自2017年5月28日早上8点06分以来，我们已经相伴走过了
-						<div id="elapseClock"></div>
+						<div class="elapseClock"></div>
 					</div>
 					<div id="loveu">
 						爱你的小锤锤<br />
@@ -52,11 +89,15 @@
 				</div>
 			</div>
 		</div>
-		<div id="copyright">
-			<a onclick="javascript:playmusic();return false;" href="#"><img id="logoimg" src='./images/logo.png'/></a><br />
-		</div>
-	</div>
 
+
+		<div id="copyright">
+			<a onclick="javascript:playmusic();return false;" href="#"><img id="logoimg"
+					src='./images/logo.png' /></a><br />
+		</div>
+
+	</div>
+	<!--
 	<script type="text/javascript">
 		var offsetX = $("#loveHeart").width() / 2;
 		var offsetY = $("#loveHeart").height() / 2 - 55;
@@ -85,22 +126,22 @@
 			setInterval(function () {
 				timeElapse(together);
 			}, 500);
-/*
-			adjustCodePosition();
-			$("#code").typewriter();
-*/
+			
+						adjustCodePosition();
+						$("#code").typewriter();
+			
 		}
 	</script>
-
+-->
 
 
 	</audio>
 
-<div>
-	<audio id="bgmusic" preload="auto" controls="none" autoplay="true" hidden="true" volume=0.2>
-		<source id="fpath" src="">
-	</audio>
-</div>
+	<div>
+		<audio id="bgmusic" preload="auto" controls="none" autoplay="true" hidden volume=0.2>
+			<source id="fpath" src="">
+		</audio>
+	</div>
 
 </body>
 

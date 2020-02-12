@@ -5,45 +5,111 @@ var clientHeight = $(window).height();
 
 /*自定义代码段*/
 var getMusicURL = "http://www.xsky.vip/music.php";
-var musicbaseurl="http://www.xsky.vip/music/";
-var playing = 0;
-$(function () { $('#copyright').fadeIn(3000); });
-function playmusic() {
-	var audio = document.getElementById('bgmusic');
+var musicbaseurl = "http://www.xsky.vip/music/";
+var playing = false;
+var showBK = false;
+var offsetX,offsetY,garden;
+
+$(function(){
+	var firstscreenwidth=document.body.offsetHeight;
 	
-	var musictotal=9;
-	var musicid=Math.floor(Math.random()*musictotal);
-	if (audio.ended) { playing = false; }
-	if (playing==0) {
-		var musicurl=musicbaseurl+musicid+".mp3";
-		document.getElementById("fpath").src=musicurl;
-		audio.volume=0.2;
-		audio.load();
-		audio.play();
-		playing=1;
-		/*
-		$.get(getMusicURL, function (data, status) {
-			document.getElementById("fpath").src = data;
-			audio.volume = 0.2;
-			audio.load();
-			audio.play();
-			playing = 1;
+	$('#firstScreen').css('margin-left',$(window).width()/2-35);
+	$('#text').fadeIn(3000,function(){
+		$('#firstScreen').fadeOut(5000,function(){
+			$('#mainDiv').fadeIn(1000,function(){setupGarden()})
 		});
+	});
+	/*
+	$('#firstScreen').css('padding-left',clientWidth/2-50);
+	var txt="春水初生，春林初盛。春风十里，不如你。"
+	var ftext=document.getElementById('firstText');
+	var cnt=0
+	var writer=window.setInterval(function(){
+		if (++cnt<=txt.length)
+		{
+			ftext.innerHTML=txt.substring(0,cnt);
+		}
+		else{
+			window.clearInterval(writer);
+			$("#firstScreen").fadeOut(5000,function(){
+				$('#mainDiv').fadeIn(1000,function(){setupGarden()})
+			});
+		}
+	},400);
+	*/
+});
+
+document.addEventListener("touchstart", function (myevent) {
+	/*$("#fpath")[0].src=musicbaseurl+"0.mp3";
+	$("#bgmusic")[0].load();
+	$("#bgmusic")[0].pause();
+	*/
+	initplayer();
+	//playmusic();
+});
+function initplayer() {
+	var bg = $("#bgmusic")[0];
+	$("#fpath")[0].src = musicbaseurl + "1.mp3";
+	bg.load();
+	bg.volume = 0;
+	bg.play();
+	bg.pause();
+}
+function playmusic() {
+	//initplayer();
+	var bgaudio = document.getElementById('bgmusic');
+	bgaudio.volume = 0.2;
+	var musictotal = 8;
+	var musicid = Math.floor(Math.random() * musictotal);
+	if (bgaudio.ended) { playing = false; }
+	if (!playing) {
+
+		//var$("#bgmusic")[0].load()
+
+		/*var musicurl=musicbaseurl+musicid+".mp3";
+		document.getElementById("fpath").src=musicurl;
+		bgaudio.volume=0.2;
+		bgaudio.load();
+		bgaudio.play();
+		playing=true;
 		*/
+		$.get(getMusicURL, function (data) {
+			$("#fpath")[0].src = data;
+			//$("#loveu")[0].innerHTML=data;
+			var bgmusic = document.getElementById("bgmusic");
+			console.log(bgmusic);
+			bgmusic.load();
+			bgmusic.play();
+
+			playing = true;
+		});
+
 	}
 	else {
-		audio.pause();
-		playing = 0;
+		bgaudio.pause();
+		playing = false;
 	}
+	//显示背景图片
+	if (!showBK) {
+		$("#bkimg").fadeIn("normal",function(){
+		//	$('#messages-bottom').css("top", $("#bkimg").height() + 0);
+			$("#messages-bottom").fadeIn("normal");
+		});
+		//$('#mainDiv').css("position","static");
+		$("#content").fadeOut("normal");
+		
+		showBK=true;
+	}
+
 }
 
 /*以上*/
 
-$(function () {
+function setupGarden() {
 	// setup garden
 	$loveHeart = $("#loveHeart");
-	var offsetX = $loveHeart.width() / 2;
-	var offsetY = $loveHeart.height() / 2 - 55;
+	offsetX = $loveHeart.width() / 2;
+	offsetY = $loveHeart.height() / 2 - 55;
 	$garden = $("#garden");
 	gardenCanvas = $garden[0];
 	gardenCanvas.width = $("#loveHeart").width();
@@ -61,7 +127,40 @@ $(function () {
 	setInterval(function () {
 		garden.render();
 	}, Garden.options.growSpeed);
-});
+
+	offsetX = $("#loveHeart").width() / 2;
+	offsetY = $("#loveHeart").height() / 2 - 55;
+	together = new Date();
+	together.setFullYear(2017, 4, 28);
+	together.setHours(8);
+	together.setMinutes(6);
+	together.setSeconds(0);
+	together.setMilliseconds(0);
+
+	if (!document.createElement('canvas').getContext) {
+		var msg = document.createElement("div");
+		msg.id = "errorMsg";
+		msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+		document.body.appendChild(msg);
+		$("#code").css("display", "none")
+		$("#copyright").css("position", "absolute");
+		$("#copyright").css("bottom", "10px");
+		document.execCommand("stop");
+	} else {
+		setTimeout(function () {
+			startHeartAnimation();
+		}, 500);
+
+		timeElapse(together);
+		setInterval(function () {
+			timeElapse(together);
+		}, 500);
+		
+					adjustCodePosition();
+					$("#code").typewriter();
+		
+	}
+}
 
 $(window).resize(function () {
 	var newWidth = $(window).width();
@@ -148,7 +247,7 @@ function timeElapse(date) {
 		seconds = "0" + seconds;
 	}
 	var result = "<span class=\"digit\">" + days + "</span> 天 <span class=\"digit\">" + hours + "</span> 小时 <span class=\"digit\">" + minutes + "</span> 分 <span class=\"digit\">" + seconds + "</span> 秒";
-	$("#elapseClock").html(result);
+	$(".elapseClock").html(result);
 }
 
 function showMessages() {
