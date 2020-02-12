@@ -12,8 +12,15 @@ var offsetX,offsetY,garden;
 
 $(function(){
 	var firstscreenwidth=document.body.offsetHeight;
+	
+	$('#firstScreen').css('margin-left',$(window).width()/2-35);
+	$('#text').fadeIn(3000,function(){
+		$('#firstScreen').fadeOut(5000,function(){
+			$('#mainDiv').fadeIn(1000,function(){setupGarden()})
+		});
+	});
+	/*
 	$('#firstScreen').css('padding-left',clientWidth/2-50);
-	//$('#firstScreen').css('padding-right',clientWidth/2);
 	var txt="春水初生，春林初盛。春风十里，不如你。"
 	var ftext=document.getElementById('firstText');
 	var cnt=0
@@ -29,7 +36,7 @@ $(function(){
 			});
 		}
 	},400);
-	
+	*/
 });
 
 document.addEventListener("touchstart", function (myevent) {

@@ -1,5 +1,10 @@
 ﻿body{margin:0;padding:0;background:#ffe;font-size:12px;overflow:auto;}
-#firstScreen{width: 60px;;height:100%;writing-mode:vertical-lr;padding-top: 20%;/*text-align: center;*/}
+
+.txtstyle{width:35px;height:35px;margin-top: 5px;}
+#text{width:70px;display:none}
+
+
+/*#firstScreen{width: 60px;;height:100%;writing-mode:vertical-lr;padding-top: 20%;/*text-align: center;*/}
 .centerspan{text-align:center;display:block;width:100%}
 #firstText{font-family:"sans-serif";font-size:50px;color:#666;padding:0px;margin: 0px ;width:50px}
 #mainDiv{display:none;/*position:fixed;left:0;top:0;*/width:100%;height:100%;}
