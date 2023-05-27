@@ -140,9 +140,9 @@ function setupGarden() {
 	offsetX = $("#loveHeart").width() / 2;
 	offsetY = $("#loveHeart").height() / 2 - 55;
 	together = new Date();
-	together.setFullYear(2017, 4, 28);
-	together.setHours(8);
-	together.setMinutes(6);
+	together.setFullYear(2017, 4, 27);
+	together.setHours(13);
+	together.setMinutes(19);
 	together.setSeconds(0);
 	together.setMilliseconds(0);
 
