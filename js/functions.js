@@ -4,9 +4,9 @@ var clientWidth = $(window).width();
 var clientHeight = $(window).height();
 
 /*自定义代码段*/
-var getMusicURL = "http://www.xsky.vip/music.php";
-var musicbaseurl = "http://www.xsky.vip/music/";
-var lpicbaseurl="http://www.xsky.vip/love/images/";
+var getMusicURL = "https://www.xsky.vip/music.php";
+var musicbaseurl = "https://www.xsky.vip/music/";
+var lpicbaseurl="https://www.xsky.vip/love/images/";
 var lpics=new Array("1g2.png","2g.png");
 var playing = false;
 var showBK = false;
