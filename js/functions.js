@@ -139,13 +139,14 @@ function setupGarden() {
 
 	offsetX = $("#loveHeart").width() / 2;
 	offsetY = $("#loveHeart").height() / 2 - 55;
-	together = new Date();
+	together = new Date(2017,4,27,13,19,0,0);
+	/*
 	together.setFullYear(2017, 4, 27);
 	together.setHours(13);
 	together.setMinutes(19);
 	together.setSeconds(0);
 	together.setMilliseconds(0);
-
+	*/
 	if (!document.createElement('canvas').getContext) {
 		var msg = document.createElement("div");
 		msg.id = "errorMsg";
