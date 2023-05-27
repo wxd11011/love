@@ -93,7 +93,7 @@ function playmusic() {
 		playing = false;
 	}
 	//显示背景图片
-	
+	/*
 	if (!showBK) {
 		$("#bkimg").fadeIn("normal",function(){
 		//	$('#messages-bottom').css("top", $("#bkimg").height() + 0);
@@ -106,7 +106,7 @@ function playmusic() {
 		
 		showBK=true;
 	}
-
+	*/
 }
 function changeBkImg(){
 	pic_index=Math.floor(Math.random()*lpics.length);
